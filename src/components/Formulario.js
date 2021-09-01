@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./Formulario.module.css";
 import useSelect from "../hooks/useSelect";
+import useInput from "../hooks/useInput";
 
-const Formulario = () => {
+const Formulario = ({ setCategoria }) => {
   // boilerplate con opciones de categorias
 
   const OPCIONES = [
@@ -19,11 +20,22 @@ const Formulario = () => {
 
   const [categoria, SelectNoticias] = useSelect("general", OPCIONES);
 
+  const [input, InputTema] = useInput("React");
+
+  // pasar categoria a app
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setCategoria(categoria);
+  };
+
   return (
     <div className={`${styles.buscador} row`}>
       <div className="col s12 m8 offset-m2">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h2 className={styles.heading}>Encuentra noticias por categoría</h2>
+          <InputTema />
           <SelectNoticias />
           <div className="input-field col s12">
             <input
