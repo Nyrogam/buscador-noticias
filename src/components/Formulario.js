@@ -3,7 +3,7 @@ import styles from "./Formulario.module.css";
 import useSelect from "../hooks/useSelect";
 import useInput from "../hooks/useInput";
 
-const Formulario = ({ setCategoria }) => {
+const Formulario = ({ setCategoria, setTema }) => {
   // boilerplate con opciones de categorias
 
   const OPCIONES = [
@@ -28,6 +28,7 @@ const Formulario = ({ setCategoria }) => {
     e.preventDefault();
 
     setCategoria(categoria);
+    setTema(input);
   };
 
   return (

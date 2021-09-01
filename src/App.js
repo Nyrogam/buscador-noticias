@@ -5,6 +5,7 @@ import axios from "axios";
 
 function App() {
   const [categoria, setCategoria] = useState("");
+  const [tema, setTema] = useState("");
 
   // useEffect(() => {
   //   const consultarAPI = async () => {
@@ -22,7 +23,7 @@ function App() {
       <Header titulo="Buscador de Noticias" />
 
       <div className="container white">
-        <Formulario setCategoria={setCategoria} />
+        <Formulario setCategoria={setCategoria} setTema={setTema} />
       </div>
     </>
   );

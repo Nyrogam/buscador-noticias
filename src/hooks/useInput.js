@@ -8,14 +8,7 @@ const useInput = (stateInicial) => {
   const InputTema = () => (
     <div className="row">
       <div className="input-field col s12">
-        <input
-          type="text"
-          className="validate"
-          id="tema"
-          onChange={(e) => {
-            setState(e.target.value);
-          }}
-        />
+        <input type="text" className="validate" id="tema" placeholder={state} />
       </div>
     </div>
   );
