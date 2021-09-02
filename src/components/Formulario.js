@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./Formulario.module.css";
 import useSelect from "../hooks/useSelect";
-import useInput from "../hooks/useInput";
 
-const Formulario = ({ setCategoria, setTema }) => {
+const Formulario = ({ setCategoria }) => {
   // boilerplate con opciones de categorias
 
   const OPCIONES = [
-    { value: "general", label: "General" },
+    { value: "breaking-news", label: "General" },
     { value: "business", label: "Negocios" },
     { value: "entertainment", label: "Entretenimiento" },
     { value: "health", label: "Salud" },
@@ -18,9 +17,7 @@ const Formulario = ({ setCategoria, setTema }) => {
 
   // llamada al custom hook
 
-  const [categoria, SelectNoticias] = useSelect("general", OPCIONES);
-
-  const [input, InputTema] = useInput("React");
+  const [categoria, SelectNoticias] = useSelect("technology", OPCIONES);
 
   // pasar categoria a app
 
@@ -28,7 +25,6 @@ const Formulario = ({ setCategoria, setTema }) => {
     e.preventDefault();
 
     setCategoria(categoria);
-    setTema(input);
   };
 
   return (
@@ -36,7 +32,6 @@ const Formulario = ({ setCategoria, setTema }) => {
       <div className="col s12 m8 offset-m2">
         <form onSubmit={handleSubmit}>
           <h2 className={styles.heading}>Encuentra noticias por categoría</h2>
-          <InputTema />
           <SelectNoticias />
           <div className="input-field col s12">
             <input
