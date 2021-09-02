@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Formulario from "./components/Formulario";
 import axios from "axios";
+import ListadoNoticias from "./components/ListadoNoticias";
 
 function App() {
   const [categoria, setCategoria] = useState("");
+  const [noticias, setNoticias] = useState([]);
 
   useEffect(() => {
     const consultarAPI = async () => {
@@ -12,7 +14,7 @@ function App() {
       const url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=es&topic=${categoria}`;
       const resultado = await axios.get(url);
 
-      console.log(resultado);
+      setNoticias(resultado.data.articles);
     };
     consultarAPI();
   }, [categoria]);
@@ -24,6 +26,7 @@ function App() {
       <div className="container white">
         <Formulario setCategoria={setCategoria} />
       </div>
+      <ListadoNoticias noticias={noticias} />
     </>
   );
 }
